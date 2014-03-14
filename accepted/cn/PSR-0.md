@@ -26,16 +26,13 @@
 * `\Zend\Acl` => `/path/to/project/lib/vendor/Zend/Acl.php`
 * `\Zend\Mail\Message` => `/path/to/project/lib/vendor/Zend/Mail/Message.php`
 
-Underscores in Namespaces and Class Names
+命名空间和类的介绍
 -----------------------------------------
 
 * `\namespace\package\Class_Name` => `/path/to/project/lib/vendor/namespace/package/Class/Name.php`
 * `\namespace\package_name\Class_Name` => `/path/to/project/lib/vendor/namespace/package_name/Class/Name.php`
 
-The standards we set here should be the lowest common denominator for
-painless autoloader interoperability. You can test that you are
-following these standards by utilizing this sample SplClassLoader
-implementation which is able to load PHP 5.3 classes.
+我们指定的标准应该是最基本的autoloader协议。你可以通过使用可以载入PHP5.3的SPL类Loader，来进行测试。
 
 示例实践
 ----------------------
