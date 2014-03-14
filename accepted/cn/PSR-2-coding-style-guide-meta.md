@@ -1,33 +1,29 @@
-PSR-2 Meta Document
+PSR-2 Meta文档
 ===================
 
-1. Summary
+1. 摘要
 ----------
 
-The intent of this guide is to reduce cognitive friction when scanning code from different authors. It does so 
-by enumerating a shared set of rules and expectations about how to format PHP code.
 
-The style rules herein are derived from commonalities among the various member projects. When various authors 
-collaborate across multiple projects, it helps to have one set of guidelines to be used among all those 
-projects. Thus, the benefit of this guide is not in the rules themselves, but in the sharing of those rules.
+这篇指导的意图是减少不同作者阅读代码的认知不同造成的差异。它通过设定一系列规范代码的规则、期望来达成目的。
+
+这里提到的样式的规则来自各种各样的成员项目。当各种各样的作者在多个项目中的协作，它帮助建立一个可以在各个项目中运行的规范。因此，这份指导的好处不是规则本身，而是这些规则的传播。
 
 
-2. Votes
+2. 投票
 --------
 
-- **Acceptance Vote:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
+- **接受投票:** [ML](https://groups.google.com/d/msg/php-fig/c-QVvnZdMQ0/TdDMdzKFpdIJ)
 
 
-3. Errata
+3. 勘误表
 ---------
 
-### 3.1 - Multi-line Arguments (09/08/2013)
+### 3.1 - 跨行 (09/08/2013)
 
-Using one or more multi-line arguments (i.e: arrays or anonymous functions) does not constitute 
-splitting the argument list itself, therefore Section 4.6 is not automatically enforced. Arrays and anonymous 
-functions are able to span multiple lines.
+使用一个或多个多行参数（如数组或匿名函数）不会造成参数列表自身的分裂，因此4.6节不会自动强制。数组和匿名函数可以使用多行。
 
-The following examples are perfectly valid in PSR-2:
+下面的例子是可行的。
 
 ```php
 <?php
@@ -40,8 +36,10 @@ $app->get('/hello/{name}', function ($name) use ($app) {
 });
 ```
 
-### 3.2 - Multi-line Arguments (10/17/2013)
+### 3.2 - 跨行 (10/17/2013)
 
 When extending multiple interfaces, the list of `extends` should be treated the same as a list
 of `implements`, as declared in Section 4.1.
+
+当扩展多行接口时，`extends`的也应该被对待为`implements`，在4.1节中声明。
 
