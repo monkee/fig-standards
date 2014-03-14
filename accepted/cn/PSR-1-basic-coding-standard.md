@@ -1,68 +1,60 @@
-Basic Coding Standard
+基本编码标准
 =====================
 
-This section of the standard comprises what should be considered the standard
-coding elements that are required to ensure a high level of technical
-interoperability between shared PHP code.
+标准的这一节包含了应该被考虑到的编码元素，这些元素保证分享的PHP代码达到高水平的技术协议。
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
+关键字”必须“，”禁止“，”需要“，”建议”，“不建议”，“会”，“不会”，“建议”，“可以”和“可选”会
+被用到。
+（原文：The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in [RFC 2119].
+interpreted as described in [RFC 2119].）
+
 
 [RFC 2119]: http://www.ietf.org/rfc/rfc2119.txt
 [PSR-0]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-0.md
 [PSR-4]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-4-autoloader.md
 
 
-1. Overview
+1. 概览
 -----------
 
-- Files MUST use only `<?php` and `<?=` tags.
+- 文件必须使用`<?php` 和 `<?=` 作为PHP代码部分开头.
 
-- Files MUST use only UTF-8 without BOM for PHP code.
+- 文件必须使用UTF-8编码，并且没有BOM。
 
-- Files SHOULD *either* declare symbols (classes, functions, constants, etc.)
-  *or* cause side-effects (e.g. generate output, change .ini settings, etc.)
-  but SHOULD NOT do both.
+- 文件应该要么申明类型（类、函数、常量等），要么引起副作用（输出、修改ini配置等），同一个文件中不应该同时出现这两种。
 
-- Namespaces and classes MUST follow an "autoloading" PSR: [[PSR-0], [PSR-4]].
+- 命名空间和类必须遵守“autoloading”规范：[[PSR-0], [PSR-4]].
 
-- Class names MUST be declared in `StudlyCaps`.
+- 类名必须是以大写字母开头的驼峰，如：`StudlyCaps`。
 
-- Class constants MUST be declared in all upper case with underscore separators.
+- 常亮必须为全部大写，并使用下划线分割。
 
-- Method names MUST be declared in `camelCase`.
+- 方法（函数）名必须声明为小写字母开头的驼峰，如：`camelCase`。
 
 
-2. Files
+2. 文件
 --------
 
-### 2.1. PHP Tags
+### 2.1. PHP 标签
 
 PHP code MUST use the long `<?php ?>` tags or the short-echo `<?= ?>` tags; it
 MUST NOT use the other tag variations.
+PHP代码必须使用`<?php ?>`或 `<? ?>`；禁止使用其它标签。
 
-### 2.2. Character Encoding
+### 2.2. 字符编码
 
-PHP code MUST use only UTF-8 without BOM.
+PHP代码必须使用UTF-8编码，并且文件不含BOM。
 
-### 2.3. Side Effects
+### 2.3. 副作用
 
-A file SHOULD declare new symbols (classes, functions, constants,
-etc.) and cause no other side effects, or it SHOULD execute logic with side
-effects, but SHOULD NOT do both.
+一个文件应该申明类型并且不产生副作用，或者仅产生副作用并且不包含逻辑代码，总之，两件事不能同时发生。
 
-The phrase "side effects" means execution of logic not directly related to
-declaring classes, functions, constants, etc., *merely from including the
-file*.
+短语“副作用”表示，逻辑的执行不直接关系到类、函数、常量的声明。仅仅限制于载入的文件。
 
-"Side effects" include but are not limited to: generating output, explicit
-use of `require` or `include`, connecting to external services, modifying ini
-settings, emitting errors or exceptions, modifying global or static variables,
-reading from or writing to a file, and so on.
+“副作用”包含但不限制于：输出，明确使用`require`或`include`，连接外部服务，修改ini配置，触发错误或异常，修改全局或者静态变量，读写文件等
 
-The following is an example of a file with both declarations and side effects;
-i.e, an example of what to avoid:
+接下来的示例，是一个文件既包含了声明又存在了副作用；这是一个反例。
 
 ```php
 <?php
@@ -82,8 +74,7 @@ function foo()
 }
 ```
 
-The following example is of a file that contains declarations without side
-effects; i.e., an example of what to emulate:
+下面的例子只有一个声明，且不包含”副作用“，这是被提倡的。
 
 ```php
 <?php
@@ -103,19 +94,18 @@ if (! function_exists('bar')) {
 ```
 
 
-3. Namespace and Class Names
+3. 命名空间和类
 ----------------------------
 
-Namespaces and classes MUST follow [PSR-0].
+命名空间和类必须遵守[PSR-0]。
 
-This means each class is in a file by itself, and is in a namespace of at
-least one level: a top-level vendor name.
+这表示每一个类是一个单独的文件，并且至少在一个命名空间下（发行者）。
 
-Class names MUST be declared in `StudlyCaps`.
+类名必须是以大写字母开头的驼峰，如：`StudlyCaps`。
 
-Code written for PHP 5.3 and after MUST use formal namespaces.
+PHP5.3以及以后的代码必须使用正式的命名空间。
 
-For example:
+例子
 
 ```php
 <?php
@@ -138,15 +128,14 @@ class Vendor_Model_Foo
 }
 ```
 
-4. Class Constants, Properties, and Methods
+4. 类常量，属性和方法
 -------------------------------------------
 
-The term "class" refers to all classes, interfaces, and traits.
+这里指的”类（class）“指的是所有的类，接口（interface）和traits。
 
-### 4.1. Constants
+### 4.1. 常量
 
-Class constants MUST be declared in all upper case with underscore separators.
-For example:
+常量必须使用大写字母，并且使用下划线分割。
 
 ```php
 <?php
@@ -159,15 +148,16 @@ class Foo
 }
 ```
 
-### 4.2. Properties
+### 4.2. 属性
 
-This guide intentionally avoids any recommendation regarding the use of
-`$StudlyCaps`, `$camelCase`, or `$under_score` property names.
+这份指导刻意避免以下提到的属性的命名方法，如：`$StudlyCaps`, `$camelCase`, 或 `$under_score`。
+
 
 Whatever naming convention is used SHOULD be applied consistently within a
 reasonable scope. That scope may be vendor-level, package-level, class-level,
 or method-level.
+不论什么样的命名规范，都应该在一定的作用域下是一致的。这个作用域可以是：发布者级别，包级别，类的级别或者方法级别。
 
-### 4.3. Methods
+### 4.3. 方法
 
-Method names MUST be declared in `camelCase()`.
+方法（函数）名必须声明为小写字母开头的驼峰，如：`camelCase()`。
